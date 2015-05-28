@@ -17,7 +17,7 @@ module Janky
 
       if repo
         url  = "#{settings.base_url}#{repo.name}"
-        [201, "Set up repo `#{repo.name}` (#{repo.uri}) with template `#{repo.job_config_path.basename}` at #{url}."]
+        [201, "Set up repo `#{repo.name}` (`#{repo.uri}`) with template `#{repo.job_config_path.basename}` at #{url}."]
       else
         [400, "Couldn't access #{nwo}; check its permissions."]
       end
