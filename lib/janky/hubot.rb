@@ -17,9 +17,9 @@ module Janky
 
       if repo
         url  = "#{settings.base_url}#{repo.name}"
-        [201, "Setup #{repo.name} at #{repo.uri} with #{repo.job_config_path.basename} | #{url}"]
+        [201, "Set up repo `#{repo.name}` (#{repo.uri}) with template `#{repo.job_config_path.basename}` at #{url}."]
       else
-        [400, "Couldn't access #{nwo}. Check the permissions."]
+        [400, "Couldn't access #{nwo}; check its permissions."]
       end
     end
 
@@ -28,7 +28,7 @@ module Janky
       repo   = find_repo(repo_name)
       status = repo.toggle_auto_build ? "enabled" : "disabled"
 
-      [200, "#{repo.name} is now #{status}"]
+      [200, "#{repo.name} is now #{status}."]
     end
 
     # Build a repository's branch.
@@ -42,9 +42,9 @@ module Janky
 
       if build
         build.run
-        [201, "Going ham on #{build.repo_name}/#{build.branch_name}"]
+        [201, "Going to town on `#{build.repo_name}/#{build.branch_name}`..."]
       else
-        [404, "Unknown branch #{branch_name.inspect}. Push again"]
+        [404, "Unknown branch `#{branch_name.inspect}`; make sure you've actually pushed it."]
       end
     end
 
@@ -60,9 +60,9 @@ module Janky
 
       if room_id = ChatService.room_id(room)
         repo.update_attributes!(:room_id => room_id)
-        [200, "Room for #{repo.name} updated to #{room}"]
+        [200, "Room for repository `#{repo.name}` updated to `#{room}`."]
       else
-        [403, "Unknown room: #{room.inspect}"]
+        [403, "Unknown room `#{room.inspect}`."]
       end
     end
 
@@ -74,9 +74,9 @@ module Janky
       if repo
         repo.context = context
         repo.save
-        [200, "Context #{context} set for #{repo_name}"]
+        [200, "Context `#{context}` set for `#{repo_name}`."]
       else
-        [404, "Unknown Repository #{repo_name}"]
+        [404, "Unknown repo `#{repo_name}`."]
       end
     end
 
@@ -135,7 +135,7 @@ module Janky
     delete %r{\/([-_\.0-9a-zA-Z]+)} do |repo_name|
       repo   = find_repo(repo_name)
       repo.destroy
-      "Janky project #{repo_name} deleted"
+      "Repo `#{repo_name}` successfully unlinked from Janky."
     end
 
     # Delete a repository's context
@@ -145,9 +145,9 @@ module Janky
       if repo
         repo.context = nil
         repo.save
-        [200, "Context removed for #{repo_name}"]
+        [200, "Context removed for repo `#{repo_name}`."]
       else
-        [404, "Unknown Repository #{repo_name}"]
+        [404, "Unknown repo `#{repo_name}`."]
       end
     end
 
