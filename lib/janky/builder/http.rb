@@ -12,6 +12,8 @@ module Janky
           http.use_ssl = true
         end
 
+        puts "run: create_url: #{create_url}; path: #{create_url.path}"
+
         request  = Net::HTTP::Post.new(create_url.path)
         if @username && @password
           request.basic_auth(@username, @password)
