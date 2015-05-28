@@ -27,6 +27,8 @@ module Janky
       end
 
       def output(url)
+        puts "Janky::Builder::HTTP#output: url: #{url}"
+
         http     = Net::HTTP.new(url.host, url.port)
         if url.scheme == "https"
           http.use_ssl = true
@@ -36,6 +38,8 @@ module Janky
         if @username && @password
           request.basic_auth(@username, @password)
         end
+
+        puts "Janky::Builder::HTTP#output: request: #{request}"
 
         response = http.request(request)
 
