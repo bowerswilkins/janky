@@ -17,6 +17,7 @@ module Janky
     end
 
     def self.push_http_response(response)
+      puts "push_http_response: code: #{response.code.inspect}; body: #{response.body.inspect}"
       push(
         :response_code => response.code.inspect,
         :response_body => response.body.inspect
