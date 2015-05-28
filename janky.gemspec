@@ -100,7 +100,6 @@ lib/janky/notifier/multi.rb
 lib/janky/public/css/base.css
 lib/janky/public/images/building-bot.gif
 lib/janky/public/images/disclosure-arrow.png
-lib/janky/public/images/logo.png
 lib/janky/public/images/robawt-status.gif
 lib/janky/public/javascripts/application.js
 lib/janky/public/javascripts/jquery.js

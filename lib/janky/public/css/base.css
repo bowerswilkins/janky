@@ -51,15 +51,10 @@ body{
 }
 
 h2#logo{
-  width:600px;
-  margin:0 auto 25px auto;
+  margin:25px auto;
 }
 h2#logo a{
-  display:block;
-  height:156px;
-  text-indent:-9999px;
   text-decoration:none;
-  background:url(../images/logo.png);
 }
 
 .content{
