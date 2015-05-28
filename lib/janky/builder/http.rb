@@ -18,7 +18,11 @@ module Janky
         end
         request.form_data = {"json" => params}
 
+        puts "run: request: #{request}"
+
         response = http.request(request)
+
+        puts "run: response: #{response}"
 
         if !%w[302 201].include?(response.code)
           Exception.push_http_response(response)
